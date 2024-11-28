@@ -5,6 +5,7 @@ import { useId } from 'react';
 import { FaRegAddressBook } from "react-icons/fa";
 import { MdAdd } from "react-icons/md";
 import { nanoid } from 'nanoid';
+
 import { addContact } from '../../redux/contactsSlice';
 import { useDispatch } from 'react-redux';
 
@@ -17,22 +18,22 @@ export default function ContactForm() {
     const nameId = useId()
     const numberId = useId()
 
-    const dispatch = useDispatch()
-    
     const initialValues = {
         name: '',
         number: '',
     }
+   
+    const dispatch = useDispatch()
 
     const handleAddContact = (values) => {
         const newContact = {
             id: nanoid(),
             name: values.name,
-            number: values.number,
+            number: values.number
         }
         dispatch(addContact(newContact))
     }
-
+   
     return (
         <div className={s.formDiv}>
             <h1 className={s.title}>Phonebook<FaRegAddressBook /></h1>
